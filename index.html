@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chestnut Ridge Resident Lookup</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+padding:20px;
+background:#f5f5f5;
+}
+
+input{
+width:100%;
+padding:12px;
+font-size:18px;
+margin-bottom:20px;
+}
+
+.card{
+background:white;
+padding:15px;
+margin-bottom:10px;
+border-radius:8px;
+box-shadow:0 2px 4px rgba(0,0,0,.1);
+}
+</style>
+</head>
+
+<body>
+
+<h2>Chestnut Ridge Resident Lookup</h2>
+
+<input
+type="text"
+id="search"
+placeholder="Enter Street Number..."
+onkeyup="searchResidents()">
+
+<div id="results"></div>
+
+<script>
+
+const residents = [
+
+];
+
+function searchResidents(){
+
+const value =
+document.getElementById("search")
+.value
+.toLowerCase();
+
+const results =
+document.getElementById("results");
+
+results.innerHTML="";
+
+residents
+.filter(r =>
+r.address.toLowerCase().includes(value)
+)
+.forEach(r=>{
+
+results.innerHTML += `
+<div class="card">
+<b>Owner:</b> ${r.owner}<br>
+<b>Tenant:</b> ${r.tenant}<br>
+<b>Address:</b> ${r.address}<br>
+<b>Card:</b> ${r.card}<br>
+<b>Status:</b> ${r.status}
+</div>
+`;
+
+});
+
+}
+</script>
+
+</body>
+</html>
